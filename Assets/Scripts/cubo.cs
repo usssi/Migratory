@@ -14,18 +14,23 @@ public class cubo : MonoBehaviour
             Instantiate(this.gameObject, new Vector3(transform.position.x + -0.5f , 6.5f), Quaternion.identity);
             Destroy(this.gameObject);
             //transform.Translate ( new Vector3 (transform.position.x * -1.5f , 13 , transform.position.z) );
+            PlayDestroySound();
         }
         else if (respawn == true &&  transform.position.x > 0 && transform.position.y <= -7)
         {
             Instantiate(this.gameObject, new Vector3(transform.position.x + 0.5f, 6.5f), Quaternion.identity);
             Destroy(this.gameObject);
             //transform.Translate ( new Vector3 (transform.position.x * -1.5f , 13 , transform.position.z) );
+            PlayDestroySound();
+
         }
         else if (respawn == true &&  transform.position.x == 0 && transform.position.y <= -7)
         {
             Instantiate(this.gameObject, new Vector3(transform.position.x, 6.5f), Quaternion.identity);
             Destroy(this.gameObject);
             //transform.Translate ( new Vector3 (transform.position.x * -1.5f , 13 , transform.position.z) );
+            PlayDestroySound();
+
         }
     }
 
@@ -36,5 +41,11 @@ public class cubo : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("cuboFloor");
             Debug.Log("cubo toca el piso");
         }
+    }
+
+    private void PlayDestroySound()
+    {
+        FindObjectOfType<AudioManager>().Play("cuboBreak");
+
     }
 }

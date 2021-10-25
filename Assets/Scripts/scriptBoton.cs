@@ -6,6 +6,7 @@ public class scriptBoton : MonoBehaviour
 {
     [SerializeField] GameObject plataforma;
 
+
     bool canBePressed;
     bool levantar;
     bool bajar;
@@ -32,27 +33,7 @@ public class scriptBoton : MonoBehaviour
         }
 
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (canBePressed && collision.transform.tag == "parche")
-    //    {
-    //        FindObjectOfType<AudioManager>().Play("botonUp");
 
-    //        transform.position = new Vector3(6, 1, 0);
-    //        canBePressed = false;
-    //        levantar = true;
-    //        bajar = false;
-    //    }
-    //    else if (canBePressed && collision.transform.tag == "explosion")
-    //    {
-    //        FindObjectOfType<AudioManager>().Play("botonUp");
-
-    //        transform.position = new Vector3(6, 1, 0);
-    //        canBePressed = false;
-    //        levantar = true;
-    //        bajar = false;
-    //    }
-    //}
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -92,10 +73,12 @@ public class scriptBoton : MonoBehaviour
         plataforma.transform.position += new Vector3(0,.1f,0);
         //plataforma.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000*Time.deltaTime));
 
+
     }
 
     void Bajar()
     {
         plataforma.transform.position -= new Vector3(0, .05f, 0);
+
     }
 }

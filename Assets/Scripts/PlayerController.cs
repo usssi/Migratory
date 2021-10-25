@@ -12,8 +12,44 @@ public class PlayerController : MonoBehaviour
     bool canMove = true;
     bool canExplode = true;
     public gameController gcPlayer;
-   
-  
+
+    private int der = 1;
+    private int izq = 2;
+    [SerializeField] float tpXder;
+    [SerializeField] float tpYder;
+    [SerializeField] float tpXizq;
+    [SerializeField] float tpYizq;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("origen") == der)
+        {
+            Debug.Log("bicho viene de la izquierda");
+            transform.position = new Vector2(tpXizq, tpYizq); 
+            transform.localScale = new Vector3(-8, 8, 1);
+
+
+
+        }
+        else if (PlayerPrefs.GetInt("origen") == izq)
+        {
+            Debug.Log("bicho viene de la derecha");
+            transform.position = new Vector2(tpXder, tpYder);
+            transform.localScale = new Vector3(8, 8, 1);
+        }
+        else if (PlayerPrefs.GetInt("origen") == 0)
+        {
+            Debug.Log("bicho sale de la casa");
+            //transform.position = new Vector2(tpXder, tpYder);
+            //transform.localScale = new Vector3(8, 8, 1);
+        }
+    }
+
+    private void Start()
+    {
+        canMove = true;
+
+    }
     void Update()
     {
         Movement();
@@ -25,10 +61,12 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == "ground" )
         {
             canjump = true;
+            Debug.Log("bicho colisiona con ground");
         }
         else if (collision.transform.tag == "cubo")
         {
             canjump = true;
+            Debug.Log("bicho colisiona con cubo");
         }
         /*
         else
@@ -37,6 +75,8 @@ public class PlayerController : MonoBehaviour
         } */
         
     }
+
+
 
    
     void Movement() 

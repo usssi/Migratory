@@ -7,13 +7,11 @@ public class gameController : MonoBehaviour
 {
     public bool jugando;
     [SerializeField] GameObject menuPausa;
-
-
+    
     void Start()
     {
         jugando = true;
         Time.timeScale = 1;
-
     }
 
     void Update()

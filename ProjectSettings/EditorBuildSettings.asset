@@ -47,5 +47,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Niveles/scene10.unity
     guid: 91b6a53e07d11e045884d09faa924b95
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 1.unity
+    guid: d6423292062467947b3971be4b2b4cd2
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 2.unity
+    guid: 4ca74c8a0dd433444a1f8b2d9359e543
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 3.unity
+    guid: 69c5892effd055040b63684e4698ac88
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/casa.unity
+    guid: 932c828e7d4bb6c4caa60d2ab0fb181e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 93a5ee94501a1864ba0fc0c87b8635e8, type: 2}

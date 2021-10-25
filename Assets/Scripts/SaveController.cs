@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SaveController : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         string activeScene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("LevelSaved", activeScene);
-
         Debug.Log(activeScene);
 
     }
