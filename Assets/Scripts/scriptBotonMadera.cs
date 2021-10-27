@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scriptBoton : MonoBehaviour
+public class scriptBotonMadera : MonoBehaviour
 {
     [SerializeField] GameObject plataforma;
 
@@ -10,6 +10,8 @@ public class scriptBoton : MonoBehaviour
     bool canBePressed;
     bool levantar;
     bool bajar;
+    public double alturaMaxima;
+    public double alturaMinima;
 
     private void Start()
     {
@@ -17,15 +19,16 @@ public class scriptBoton : MonoBehaviour
         levantar = false;
         bajar = true;
     }
+
     private void FixedUpdate()
     {
-        if (levantar && plataforma.transform.position.y <= -3.5f)
+        if (bajar && plataforma.transform.position.y <= alturaMaxima)
         {
             Debug.Log("se esta levantando");
             Levantar();
 
         }
-        else if (bajar && plataforma.transform.position.y > -6.5f)
+        else if (levantar && plataforma.transform.position.y > alturaMinima)
         {
             Debug.Log("esta bajando");
             Bajar();
@@ -35,9 +38,19 @@ public class scriptBoton : MonoBehaviour
     }
 
 
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (canBePressed && collision.transform.tag == "parche")
+        if (canBePressed && collision.transform.tag == "cubo")
+        {
+            FindObjectOfType<AudioManager>().Play("botonUp");
+
+            transform.position = new Vector2(transform.position.x ,transform.position.y-.1f );
+            canBePressed = false;
+            levantar = true;
+            bajar = false;
+        }
+        else if (canBePressed && collision.transform.tag == "Player")
         {
             FindObjectOfType<AudioManager>().Play("botonUp");
 
@@ -46,21 +59,12 @@ public class scriptBoton : MonoBehaviour
             levantar = true;
             bajar = false;
         }
-        else if (canBePressed && collision.transform.tag == "explosion")
-        {
-            FindObjectOfType<AudioManager>().Play("botonUp");
-
-            transform.position = new Vector2(transform.position.x, transform.position.y - .1f);
-            canBePressed = false;
-            levantar = true;
-            bajar = false;
-        }
-
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag == "parche")
+        if (collision.transform.tag == "cubo")
         {
             FindObjectOfType<AudioManager>().Play("botonDown");
 
@@ -69,7 +73,8 @@ public class scriptBoton : MonoBehaviour
             levantar = false;
             bajar = true;
         }
-        else if (collision.transform.tag == "explosion")
+
+        if (collision.transform.tag == "Player")
         {
             FindObjectOfType<AudioManager>().Play("botonDown");
 
@@ -83,11 +88,13 @@ public class scriptBoton : MonoBehaviour
 
     void Levantar()
     {
-        plataforma.transform.position += new Vector3(0,.1f,0);
+        //velocidad de levantar
+        plataforma.transform.position += new Vector3(0, .1f, 0);
     }
 
     void Bajar()
     {
+        //velocidad de bajar
         plataforma.transform.position -= new Vector3(0, .05f, 0);
     }
 }

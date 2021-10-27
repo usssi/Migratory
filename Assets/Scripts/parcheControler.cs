@@ -17,6 +17,7 @@ public class parcheControler : MonoBehaviour
     public gameController gC;
 
 
+
     void OnEnable()
     {
         //crea un array donde pone todos los objetos con el tag "Player"
@@ -59,11 +60,17 @@ public class parcheControler : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, targetBicho.position, followSpeed * Time.deltaTime);            
         }
+        if (canMove && Vector2.Distance(transform.position, targetBicho.position) > 8)
+        {
+            follow = true;
+
+        }
     }
 
     private void Movement()
         //movimiento de parche
     {
+        
         if (canMove && Input.GetKey(KeyCode.D))
         {
             transform.Translate(0, vel * Time.deltaTime, 0);
@@ -94,29 +101,14 @@ public class parcheControler : MonoBehaviour
         }
 
         // E para activar follow
+
         if (canMove && Input.GetKey(KeyCode.E))
         {
             follow = true;
             miCollider.enabled = false;
         }
 
-        if (canMove && Input.GetKeyDown("up"))
-        {
-            follow = true;
-            miCollider.enabled = false;
-        }
-
-        //if (canMove && Input.GetKeyDown("left"))
-        //{
-        //    follow = true;
-        //    miCollider.enabled = false;
-        //}
-
-        //if (canMove && Input.GetKeyDown("right"))
-        //{
-        //    follow = true;
-        //    miCollider.enabled = false;
-        //}
+        //controlador de explosion
 
         if (gC.jugando && !follow && canExplode && Input.GetKeyDown("space"))
         {
@@ -158,6 +150,5 @@ public class parcheControler : MonoBehaviour
         canExplode = true;
         Debug.Log("can explode");
     }
-
-   
+    
 }

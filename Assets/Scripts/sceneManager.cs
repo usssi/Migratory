@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager : MonoBehaviour
 {
+    [Header("1= estas en la izquierda, apareces en la derecha")]
     [SerializeField] string escenaDestino;
     [SerializeField] int escenaOrigen;
 

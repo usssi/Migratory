@@ -298,7 +298,7 @@ MonoBehaviour:
   followSpeed: 7.5
   targetBicho: {fileID: 0}
   follow: 1
-  vel: 7.5
+  vel: 8
   explosion: {fileID: 1552555324}
   delayExplosion: 0.5
   canExplode: 1

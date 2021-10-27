@@ -12,6 +12,7 @@ TagManager:
   - lava
   - boton
   - explosion
+  - parcheforma
   layers:
   - Default
   - TransparentFX
