@@ -79,3 +79,24 @@ MonoBehaviour:
     loop: 0
     mute: 0
     source: {fileID: 0}
+  - name: plataformaBreak
+    clip: {fileID: 8300000, guid: d7d24a1e5cced7b40b8a8bbd82008457, type: 3}
+    output: {fileID: 24300002, guid: 1fdbb6c8c0dff0040bf13aac0617b2e4, type: 2}
+    volume: 0.8
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: magic1
+    clip: {fileID: 8300000, guid: bf57672da1f45a04e8302bb5210328ab, type: 3}
+    output: {fileID: 24300002, guid: 1fdbb6c8c0dff0040bf13aac0617b2e4, type: 2}
+    volume: 0.9
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: magic2
+    clip: {fileID: 8300000, guid: 373f4110b65771b4bb87cedc174ec2f1, type: 3}
+    output: {fileID: 24300002, guid: 1fdbb6c8c0dff0040bf13aac0617b2e4, type: 2}
+    volume: 0.9
+    loop: 0
+    mute: 0
+    source: {fileID: 0}

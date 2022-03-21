@@ -30,7 +30,7 @@ public class parchePlataforma : MonoBehaviour
             colisionConParche = true;
             Debug.Log("colision con parche");
 
-            if (!plataformaActivada && colisionConParche && Input.GetKeyDown(KeyCode.C))
+            if (!plataformaActivada && colisionConParche/* && Input.GetKeyDown(KeyCode.C)*/)
             {
                 FindObjectOfType<AudioManager>().Play("magic1");
 
@@ -43,22 +43,24 @@ public class parchePlataforma : MonoBehaviour
 
             }
 
-            if (plataformaActivada && Input.GetKeyUp(KeyCode.C))
-            {
-                FindObjectOfType<AudioManager>().Play("magic2");
+            //if (plataformaActivada && Input.GetKeyUp(KeyCode.C))
+            //{
+            //    FindObjectOfType<AudioManager>().Play("magic2");
 
-                plataformaActivada = false;
-                colliderPlataforma.enabled = false;
+            //    plataformaActivada = false;
+            //    colliderPlataforma.enabled = false;
 
-                Debug.Log("plataforma desactivada");
-                desactivado.SetActive(true);
-                activado.SetActive(false);
+            //    Debug.Log("plataforma desactivada");
+            //    desactivado.SetActive(true);
+            //    activado.SetActive(false);
 
-            }            
+            //}            
         }
 
-        else if (Vector2.Distance(transform.position, parche.position) > 1.5)
+        else if (plataformaActivada && Vector2.Distance(transform.position, parche.position) > 1.5)
         {
+            FindObjectOfType<AudioManager>().Play("magic2");
+
             colliderPlataforma.enabled = false;
             colisionConParche = false;
             plataformaActivada = false;

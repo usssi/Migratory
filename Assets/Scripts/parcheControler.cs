@@ -35,7 +35,8 @@ public class parcheControler : MonoBehaviour
 
     void Start()
     {
-        
+        transform.position = Vector2.MoveTowards(transform.position, targetBicho.position, followSpeed*5);
+
         follow = true;
 
         miCollider = GetComponent<Collider2D>();
@@ -63,7 +64,7 @@ public class parcheControler : MonoBehaviour
         if (canMove && Vector2.Distance(transform.position, targetBicho.position) > 8)
         {
             follow = true;
-
+            miCollider.enabled = false;
         }
     }
 

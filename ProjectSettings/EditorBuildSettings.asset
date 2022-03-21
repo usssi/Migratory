@@ -62,5 +62,26 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/zonas finales/zona 4.unity
     guid: 3c4323825d648974c850e744da80d5e1
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 5.unity
+    guid: 2c456ac22e0c7ec40adb4935b215405e
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 6.unity
+    guid: 6c276e92ac29921498e2d0e1670dd0cf
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 7.unity
+    guid: 6983f3b6c6cfcf74480cd2d87d43996c
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 8.unity
+    guid: dae1b96fed332af40bda3d7fe52374a0
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 9.unity
+    guid: 5b93374622c1c8249aff0a760c511109
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 10.unity
+    guid: 9ca40f002d509914aa41c5500fa564da
+  - enabled: 1
+    path: Assets/Scenes/zonas finales/zona 11.unity
+    guid: 4cbfca730d4a12a4fa4f06cc3c86f772
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 93a5ee94501a1864ba0fc0c87b8635e8, type: 2}

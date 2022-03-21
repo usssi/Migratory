@@ -5,89 +5,79 @@ using UnityEngine;
 public class scriptBoton : MonoBehaviour
 {
     [SerializeField] GameObject plataforma;
+    [SerializeField] Transform parche;
+    public GameObject celeste;
+    public GameObject blanco;
 
 
     bool canBePressed;
     bool levantar;
     bool bajar;
 
+    public float alturaMaxima;
+    public float alturaMinima;
+
     private void Start()
     {
         canBePressed = true;
         levantar = false;
         bajar = true;
+        celeste.SetActive(false);
+        blanco.SetActive(true);
     }
+
+    private void Update()
+    {
+        if (canBePressed && Vector2.Distance(transform.position, parche.position)< 1)
+        {
+            Debug.Log("bicho apreta boton");
+            FindObjectOfType<AudioManager>().Play("botonUp");
+            FindObjectOfType<AudioManager>().Play("magic1");
+
+            transform.position = new Vector2(transform.position.x, transform.position.y - .1f);
+            canBePressed = false;
+            bajar = false;
+            levantar = true;
+            celeste.SetActive(true);
+            blanco.SetActive(false);
+
+        }
+        else if (!canBePressed && Vector2.Distance(transform.position, parche.position) > 1)
+        {
+            Debug.Log("bicho NO apreta boton");
+            FindObjectOfType<AudioManager>().Play("botonDown");
+            FindObjectOfType<AudioManager>().Play("magic2");
+
+            transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
+            canBePressed = true;
+            bajar = true;
+            levantar = false;
+            celeste.SetActive(false);
+            blanco.SetActive(true);
+        }
+        
+    }
+
     private void FixedUpdate()
     {
-        if (levantar && plataforma.transform.position.y <= -3.5f)
+        if (bajar)
         {
-            Debug.Log("se esta levantando");
-            Levantar();
+            if (plataforma.transform.position.y > alturaMinima)
+            {
+                plataforma.transform.position -= new Vector3(0, .05f, 0);
 
-        }
-        else if (bajar && plataforma.transform.position.y > -6.5f)
-        {
-            Debug.Log("esta bajando");
-            Bajar();
-
+            }
         }
 
-    }
-
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (canBePressed && collision.transform.tag == "parche")
+        if (levantar)
         {
-            FindObjectOfType<AudioManager>().Play("botonUp");
+            if (plataforma.transform.position.y <= alturaMaxima)
+            {
+                plataforma.transform.position += new Vector3(0, .1f, 0);
 
-            transform.position = new Vector2(transform.position.x, transform.position.y - .1f);
-            canBePressed = false;
-            levantar = true;
-            bajar = false;
-        }
-        else if (canBePressed && collision.transform.tag == "explosion")
-        {
-            FindObjectOfType<AudioManager>().Play("botonUp");
-
-            transform.position = new Vector2(transform.position.x, transform.position.y - .1f);
-            canBePressed = false;
-            levantar = true;
-            bajar = false;
+            }
         }
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "parche")
-        {
-            FindObjectOfType<AudioManager>().Play("botonDown");
-
-            transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
-            canBePressed = true;
-            levantar = false;
-            bajar = true;
-        }
-        else if (collision.transform.tag == "explosion")
-        {
-            FindObjectOfType<AudioManager>().Play("botonDown");
-
-            transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
-            canBePressed = true;
-            levantar = false;
-            bajar = true;
-        }
-
-    }
-
-    void Levantar()
-    {
-        plataforma.transform.position += new Vector3(0,.1f,0);
-    }
-
-    void Bajar()
-    {
-        plataforma.transform.position -= new Vector3(0, .05f, 0);
-    }
 }
